@@ -6,13 +6,12 @@
 #region Designer generated code
 
 using pb = global::Google.Protobuf;
-using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
-using scg = global::System.Collections.Generic;
-namespace AccountAuthorization2 {
+namespace AccountAuthorization2
+{
 
-  /// <summary>Holder for reflection information generated from WebAPI/account_authorization_2.proto</summary>
-  public static partial class AccountAuthorization2Reflection {
+    /// <summary>Holder for reflection information generated from WebAPI/account_authorization_2.proto</summary>
+    public static partial class AccountAuthorization2Reflection {
 
     #region Descriptor
     /// <summary>File descriptor for WebAPI/account_authorization_2.proto</summary>

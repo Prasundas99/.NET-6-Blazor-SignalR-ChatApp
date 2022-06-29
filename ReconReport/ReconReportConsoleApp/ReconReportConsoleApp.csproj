@@ -7,4 +7,11 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="aqlaserializer" Version="2.0.1.1069" />
+    <PackageReference Include="Google.Protobuf" Version="3.21.2" />
+    <PackageReference Include="Google.Protobuf.Tools" Version="3.21.1" />
+    <PackageReference Include="WebSocketSharp" Version="1.0.3-rc11" />
+  </ItemGroup>
+
 </Project>

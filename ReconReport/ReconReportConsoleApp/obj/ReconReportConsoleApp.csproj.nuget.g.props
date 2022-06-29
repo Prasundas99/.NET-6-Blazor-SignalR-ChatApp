@@ -12,4 +12,7 @@
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <SourceRoot Include="C:\Users\prasun\.nuget\packages\" />
   </ItemGroup>
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgGoogle_Protobuf_Tools Condition=" '$(PkgGoogle_Protobuf_Tools)' == '' ">C:\Users\prasun\.nuget\packages\google.protobuf.tools\3.21.1</PkgGoogle_Protobuf_Tools>
+  </PropertyGroup>
 </Project>
