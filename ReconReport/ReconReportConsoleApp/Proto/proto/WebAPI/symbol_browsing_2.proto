@@ -1,0 +1,233 @@
+// Symbol related messages
+syntax = "proto2";
+package symbol_browsing_2;
+
+import "common/decimal.proto";
+import "common/shared_1.proto";
+import "WebAPI/metadata_2.proto";
+import "WebAPI/metadata_admin_2.proto";
+
+// Symbol structure.
+message Symbol
+{
+  // Symbol Identifier.
+  required string id = 1;
+
+  // Symbol readable name.
+  required string name = 2;
+
+  // Symbol description.
+  required string description = 3;
+
+  // CFI code (Classification of Financial Instruments, ISO 10962) if appropriate.
+  optional string cfi_code = 4;
+
+  // True if this symbol has child symbols (false for leafs of the symbol tree).
+  optional bool has_child_symbols = 5;
+
+  // Contract meta-data if a symbol is a specific contract (leaf of the symbol tree).
+  optional metadata_2.ContractMetadata contract_metadata = 6;
+
+  // Deleted flag is used in updates when the symbol is either removed (e.g. expired) or
+  // no longer meets request filtering criterias (e.g. SymbolListRequest.category_id filter).
+  // Note: list of categories in category_id field (see below) may be cleared when symbol is removed.
+  optional bool deleted = 7;
+
+  // Last trading date for derivatives if applicable.
+  // (local exchange date in time format, use date part only).
+  optional sint64 last_trading_date = 8;
+
+  // Month letter and 2-digit year identifying the maturity month of the symbol.
+  // Note: look at comment for maturity_month_year from ContractMetadata for further info.
+  optional string maturity_month_year = 9;
+
+  // Name of a group of symbols that share the same properties (e.g. commodity name for futures and options).
+  optional string instrument_group_name = 10;
+
+  // ID of the parent symbol (if this is not the root symbol - product).
+  optional string parent_symbol_id = 11;
+
+  // List of categories of this symbol, if any.
+  repeated string category_ids = 12;
+
+  // If this is a double-quoted product then a source symbol ID is included.
+  optional string source_symbol_id = 13;
+
+  // Meta-data of a product if this symbol describes one (aka Symbol Root Key).
+  optional ProductMetadata product_metadata = 14;
+
+  // Meta-data of a security if this symbol describes one (aka Symbol Prefix Key).
+  optional SecurityMetadata security_metadata = 15;
+
+  // Meta-data of options maturity group if this symbol describes one (aka Option Lead Key).
+  optional OptionMaturity option_maturity_metadata = 16;
+}
+
+message OptionMaturity
+{
+  optional string option_maturity_id = 1;
+}
+
+// Request a list of symbols (options) by an underlying contract.
+message SymbolsByUnderlyingRequest
+{
+  required uint32 underlying_contract_id = 1;
+}
+
+// Report with a list of symbols.
+// When the list is updated by a subscription
+// (e.g. some option maturity is expired or a new one appears)
+// the list includes only new or deleted symbols.
+message SymbolsByUnderlyingReport
+{
+  // List of related symbols (option maturities without strikes).
+  repeated Symbol symbols = 1;
+}
+
+// Request a list of child symbols for a higher level symbol.
+message ChildSymbolsRequest
+{
+  // Can be either id of the parent symbol or instrument group's name (for futures only, e.g. 'F.US.EP').
+  required string parent_symbol_id = 1;
+
+  // Optional filter by categories.
+  repeated string category_ids = 2;
+}
+
+// Report with a list of child symbols.
+message ChildSymbolsReport
+{
+  // List of child symbols.
+  repeated Symbol symbols = 1;
+}
+
+// Symbol category.
+message SymbolCategory
+{
+  // Category identifier.
+  required string id = 1;
+
+  // Category name.
+  required string name = 2;
+
+  // Category description.
+  optional string description = 3;
+
+  // Category parent identifier. Omitted for root categories.
+  optional string parent_id = 4;
+
+  // Indicates whether this category can be used as a filter for getting a list of symbols.
+  required bool can_filter = 5;
+
+  // If the category is an exchange then this field defines exchange ID.
+  optional sint32 exchange_id = 6;
+
+  // If the category is a contributor then this field defines contributor ID.
+  optional string contributor_id = 7;
+
+  // Deleted flag is used in updates when the category is removed.
+  optional bool deleted = 8;
+}
+
+// Request for a symbol category [sub-]tree for a particular root. each category can have a list of sub-categories.
+// A list of roots can be requested using an empty list of category IDs.
+message SymbolCategoryListRequest
+{
+  // Category Identifier to request corresponding sub-tree.
+  // Do not specify category ID to get categories from roots.
+  optional string category_id = 1;
+
+  // Optional depth. One level is returned if not specified.
+  optional uint32 depth = 2;
+}
+
+// Report with a symbol category tree for a particular root.
+message SymbolCategoryListReport
+{
+  // List of categories linked to their parents.
+  repeated SymbolCategory symbol_categories = 1;
+}
+
+// Request for a specific category by ID.
+message SymbolCategoryRequest
+{
+  // Category Identifier to request corresponding category.
+  optional string category_id = 1;
+}
+
+// Report with a category.
+message SymbolCategoryReport
+{
+  optional SymbolCategory symbol_category = 1;
+}
+
+// Request for a list of symbols according to a filter.
+// At least one filter field has to be specified.
+message SymbolListRequest
+{
+  // Category filtering. Only symbols that belong to all of the specified categories are returned.
+  repeated string category_ids = 1;
+
+  // Number of levels in the symbol tree to return, one is returned if omitted.
+  optional uint32 depth = 2;
+}
+
+// Report with a list of found symbols.
+message SymbolListReport
+{
+  // List of symbols.
+  repeated Symbol symbols = 1;
+}
+
+// Request for a specific symbol by ID.
+message SymbolRequest
+{
+  // ID of a symbol to request.
+  required string symbol_id = 1;
+}
+
+// Report with a symbol.
+message SymbolReport
+{
+  optional Symbol symbol = 1;
+}
+
+message ProductMetadata
+{
+  optional string product_id = 1;
+}
+
+message SecurityMetadata
+{
+  optional string security_id = 1;
+
+  // CFI code (Classification of Financial Instruments, ISO 10962).
+  optional string cfi_code = 2;
+
+  // Contract currency code (ISO 4217 based).
+  optional string currency = 3;
+
+  // Size or a single market tick in correct price format.
+  optional double tick_size = 4;
+
+  // Symbol tick money value in the symbol's currency.
+  optional double tick_value = 5;
+
+  // Period type. This field is associated with PeriodType enum type.
+  optional uint32 period_type = 6;
+
+  // Period value in period_type units.
+  optional uint32 period_value = 7;
+
+  // Contract size in the number of units (where defined). Unit is defined by contract_size_unit filed.
+  optional cqg.Decimal contract_size_in_units = 8;
+
+  // Unit label for the contract size.
+  optional shared_1.Text contract_size_unit = 9;
+
+  // Optional custom symbol parameters per associated contributor (if any).
+  repeated metadata_admin_2.ContributorParameters contributor_parameters = 10;
+
+  // ID of the symbol the security represents (Symbol.id attribute).
+  optional string symbol_id = 11;
+}

@@ -1,0 +1,15 @@
+C:\Users\prasun\Desktop\Recon Report\ReconReport\ReconReportConsoleApp\bin\Debug\net6.0\ReconReportConsoleApp.exe
+C:\Users\prasun\Desktop\Recon Report\ReconReport\ReconReportConsoleApp\bin\Debug\net6.0\ReconReportConsoleApp.deps.json
+C:\Users\prasun\Desktop\Recon Report\ReconReport\ReconReportConsoleApp\bin\Debug\net6.0\ReconReportConsoleApp.runtimeconfig.json
+C:\Users\prasun\Desktop\Recon Report\ReconReport\ReconReportConsoleApp\bin\Debug\net6.0\ReconReportConsoleApp.dll
+C:\Users\prasun\Desktop\Recon Report\ReconReport\ReconReportConsoleApp\bin\Debug\net6.0\ReconReportConsoleApp.pdb
+C:\Users\prasun\Desktop\Recon Report\ReconReport\ReconReportConsoleApp\obj\Debug\net6.0\ReconReportConsoleApp.csproj.AssemblyReference.cache
+C:\Users\prasun\Desktop\Recon Report\ReconReport\ReconReportConsoleApp\obj\Debug\net6.0\ReconReportConsoleApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\prasun\Desktop\Recon Report\ReconReport\ReconReportConsoleApp\obj\Debug\net6.0\ReconReportConsoleApp.AssemblyInfoInputs.cache
+C:\Users\prasun\Desktop\Recon Report\ReconReport\ReconReportConsoleApp\obj\Debug\net6.0\ReconReportConsoleApp.AssemblyInfo.cs
+C:\Users\prasun\Desktop\Recon Report\ReconReport\ReconReportConsoleApp\obj\Debug\net6.0\ReconReportConsoleApp.csproj.CoreCompileInputs.cache
+C:\Users\prasun\Desktop\Recon Report\ReconReport\ReconReportConsoleApp\obj\Debug\net6.0\ReconReportConsoleApp.dll
+C:\Users\prasun\Desktop\Recon Report\ReconReport\ReconReportConsoleApp\obj\Debug\net6.0\refint\ReconReportConsoleApp.dll
+C:\Users\prasun\Desktop\Recon Report\ReconReport\ReconReportConsoleApp\obj\Debug\net6.0\ReconReportConsoleApp.pdb
+C:\Users\prasun\Desktop\Recon Report\ReconReport\ReconReportConsoleApp\obj\Debug\net6.0\ReconReportConsoleApp.genruntimeconfig.cache
+C:\Users\prasun\Desktop\Recon Report\ReconReport\ReconReportConsoleApp\obj\Debug\net6.0\ref\ReconReportConsoleApp.dll
