@@ -2,6 +2,7 @@
 
 using WebSocketSharp;
 using WebAPI2;
+using AqlaSerializer;
 
 string user_name = "HRVYSTLD3";
 string password = "1Password!";
@@ -42,13 +43,14 @@ string LogOn(string user_name,string password,
 {
     var client_msg = new ClientMsg();
     var logon = client_msg.Logon;
-    logon.UserName = user_name;
-    logon.Password = password;
-    logon.ClientAppId = client_app_id;
-    logon.ClientVersion = client_version;
-    logon.ProtocolVersionMajor = protocol_version_major;
-    logon.ProtocolVersionMinor = protocol_version_minor;
-    logon.PrivateLabel = "HRVYST";
+    //var logon = ProtoSerialize(logonPbr);
+    //logon.UserName = user_name;
+    //logon.Password = password;
+    //logon.ClientAppId = client_app_id;
+    //logon.ClientVersion = client_version;
+    //logon.ProtocolVersionMajor = protocol_version_major;
+    //logon.ProtocolVersionMinor = protocol_version_minor;
+    //logon.PrivateLabel = "HRVYST";
     send_client_message(client_msg);
     ServerMsg ServerMsg = ReciveServerMsg();
     if (ServerMsg.LogonResult.ResultCode != 0)
@@ -84,10 +86,14 @@ void  send_client_message(ClientMsg client_msg)
 ServerMsg ReciveServerMsg()
 {
     var server_msg = new ServerMsg();
+    ws.OnMessage += RecivedData;
     return server_msg;
 }
 
-
+void RecivedData(object sender, MessageEventArgs e)
+{
+    Console.Write(e.Data);
+}
 
 /*
 def receive_server_message(self):
@@ -109,4 +115,24 @@ def receive_server_message(self):
 void Exception(string v)
 {
     throw new System.Exception(v);
+}
+
+
+byte[] ProtoSerialize<T>(T record) where T : class
+{
+    if (null == record) return null;
+
+    try
+    {
+        using (var stream = new MemoryStream())
+        {
+            Serializer.Serialize(stream, record);
+            return stream.ToArray();
+        }
+    }
+    catch
+    {
+        // Log error
+        throw;
+    }
 }
