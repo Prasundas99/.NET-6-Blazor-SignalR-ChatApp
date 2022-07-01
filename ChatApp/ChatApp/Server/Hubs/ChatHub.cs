@@ -12,7 +12,7 @@ namespace ChatApp.Server.Hubs
 
         public async Task SendMessage(string user, string message)
         {
-            await Clients.All.SendAsync("", user, message);
+            await Clients.All.SendAsync("GetThatMessage", user, message);
         }
     }
 }
