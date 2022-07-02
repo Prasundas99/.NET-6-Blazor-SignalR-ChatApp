@@ -1,0 +1,8 @@
+C:\Users\prasun\Desktop\Recon Report\ChatApp\ChatApp\Server\obj\Debug\net6.0\ChatApp.Server.csproj.AssemblyReference.cache
+C:\Users\prasun\Desktop\Recon Report\ChatApp\ChatApp\Server\obj\Debug\net6.0\ChatApp.Server.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\prasun\Desktop\Recon Report\ChatApp\ChatApp\Server\obj\Debug\net6.0\ChatApp.Server.AssemblyInfoInputs.cache
+C:\Users\prasun\Desktop\Recon Report\ChatApp\ChatApp\Server\obj\Debug\net6.0\ChatApp.Server.AssemblyInfo.cs
+C:\Users\prasun\Desktop\Recon Report\ChatApp\ChatApp\Server\obj\Debug\net6.0\ChatApp.Server.csproj.CoreCompileInputs.cache
+C:\Users\prasun\Desktop\Recon Report\ChatApp\ChatApp\Server\obj\Debug\net6.0\ChatApp.Server.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\prasun\Desktop\Recon Report\ChatApp\ChatApp\Server\obj\Debug\net6.0\ChatApp.Server.RazorAssemblyInfo.cache
+C:\Users\prasun\Desktop\Recon Report\ChatApp\ChatApp\Server\obj\Debug\net6.0\ChatApp.Server.RazorAssemblyInfo.cs
