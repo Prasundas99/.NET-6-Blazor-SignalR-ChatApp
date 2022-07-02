@@ -1,6 +1,6 @@
 # .NET-6-Blazor-SignalR-ChatApp
 
-A real-time chat application using .NET 6, SignalR and KnockoutJS. Available for Web and Desktop
+A real-time chat application using .NET 6, SignalR . 
 
 ![](https://raw.githubusercontent.com/AKouki/SignalR-Chat/main/Chat.Web/wwwroot/images/screenshots/mockup1.png)
 ![](https://raw.githubusercontent.com/AKouki/SignalR-Chat/main/Chat.Web/wwwroot/images/screenshots/desktop.png)
