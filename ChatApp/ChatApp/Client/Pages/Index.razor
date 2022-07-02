@@ -20,9 +20,28 @@
             var msg = $"{(string.IsNullOrEmpty(user) ? "" : user + ": ")} {message}";
             messages += msg + "\n";
             StateHasChanged();
-        });
+        }); 
 
         await hubConnection.StartAsync();
+    }
+
+    private async Task Send()
+    {
+        if(hubConnection != null)
+        {
+            await hubConnection.SendAsync("SendMessage", username, message);
+            message = string.Empty;
+        }
+    }
+
+    public bool IsConnected => hubConnection?.State == HubConnectionState.Connected;
+
+    public async ValueTask DisposeAsync()
+    {
+        if(hubConnection != null)
+        {
+            await hubConnection.DisposeAsync();
+        }
     }
 
 }
