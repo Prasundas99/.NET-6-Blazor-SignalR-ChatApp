@@ -1,3 +1,4 @@
+using ChatApp.Server.Hubs;
 using Microsoft.AspNetCore.ResponseCompression;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -39,6 +40,9 @@ app.UseRouting();
 
 app.MapRazorPages();
 app.MapControllers();
+
+app.MapHub<ChatHub>("/chathub");
+
 app.MapFallbackToFile("index.html");
 
 app.Run();
